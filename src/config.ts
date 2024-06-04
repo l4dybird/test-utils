@@ -198,7 +198,7 @@ export async function getVitestConfigFromNuxt(
 
 export function defineVitestConfig(config: InlineConfig & { test?: VitestConfig } = {}) {
   // @ts-expect-error TODO: investigate type mismatch
-  return mergeConfig(defineConfig({}), defineConfig(async () => {
+  return mergeConfig(defineConfig({}), async () => await defineConfig(async () => {
     // When Nuxt module calls `startVitest`, we don't need to call `getVitestConfigFromNuxt` again
     if (process.env.__NUXT_VITEST_RESOLVED__) return config
 
