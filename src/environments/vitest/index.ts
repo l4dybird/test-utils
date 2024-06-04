@@ -31,7 +31,6 @@ export default <Environment>{
     }))
 
     win.__NUXT_VITEST_ENVIRONMENT__ = true
-    console.log('hoge', environmentOptions.nuxt?.overrides)
     win.__NUXT__ = {
       serverRendered: false,
       config: {
@@ -42,7 +41,6 @@ export default <Environment>{
       data: {},
       state: {},
     }
-    console.log('nuxt', win.__NUXT__)
 
     const app = win.document.createElement('div')
     // this is a workaround for a happy-dom bug with ids beginning with _
