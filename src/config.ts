@@ -213,14 +213,14 @@ export function defineVitestConfig(config: InlineConfig & { test?: VitestConfig 
       dotenv: config.test?.environmentOptions?.nuxt?.dotenv,
       overrides: structuredClone(overrides),
     })
-    console.log('hoge', hoge)
+    console.log('hoge', hoge.test?.environmentOptions?.nuxt?.overrides)
 
     const mergeConfig = defu(
       config,
       hoge,
     )
 
-    console.log('marge', mergeConfig)
+    console.log('marge', mergeConfig.test?.environmentOptions?.nuxt?.overrides)
     return mergeConfig
   })
 }
