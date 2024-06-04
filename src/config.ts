@@ -197,6 +197,7 @@ export async function getVitestConfigFromNuxt(
 }
 
 export function defineVitestConfig(config: InlineConfig & { test?: VitestConfig } = {}) {
+  console.log('config', config)
   // @ts-expect-error TODO: investigate type mismatch
   return defineConfig(async () => {
     // When Nuxt module calls `startVitest`, we don't need to call `getVitestConfigFromNuxt` again
@@ -208,9 +209,6 @@ export function defineVitestConfig(config: InlineConfig & { test?: VitestConfig 
     if (config.test?.setupFiles && !Array.isArray(config.test.setupFiles)) {
       config.test.setupFiles = [config.test.setupFiles].filter(Boolean) as string[]
     }
-
-    console.log('config', config)
-    console.log('overrides', overrides)
 
     return defu(
       config,
