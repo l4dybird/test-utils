@@ -42,6 +42,7 @@ export default <Environment>{
       data: {},
       state: {},
     }
+    console.log('nuxt', win.__NUXT__)
 
     const app = win.document.createElement('div')
     // this is a workaround for a happy-dom bug with ids beginning with _
