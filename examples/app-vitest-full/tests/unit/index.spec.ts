@@ -5,5 +5,6 @@ it('unit test', () => {
 })
 
 it('hello nuxt', () => {
-  expect(useRuntimeConfig().public.hello).toBe('nuxt')
+  const config = useRuntimeConfig()
+  expect(config.public.hello).toBe('nuxt')
 })
