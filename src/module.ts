@@ -85,6 +85,8 @@ export default defineNuxtModule<NuxtVitestOptions>({
 
       const viteConfig = await getVitestConfigFromNuxt({ nuxt, viteConfig: defu({ test: options.vitestConfig }, rawViteConfig) })
 
+      console.log('viteConfig', viteConfig.test)
+
       viteConfig.plugins = (viteConfig.plugins || []).filter((p) => {
         return !p || !('name' in p) || !vitePluginBlocklist.includes(p.name)
       })
