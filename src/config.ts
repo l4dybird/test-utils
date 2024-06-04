@@ -221,7 +221,7 @@ export function defineVitestConfig(config: InlineConfig & { test?: VitestConfig 
     console.log('marge', mergeConfig.test?.environmentOptions?.nuxt?.overrides?.runtimeConfig?.public)
     return mergeConfig
   })
-  console.log('vite', viteConfig)
+  console.log('sample', viteConfig.test?.environmentOptions?.nuxt?.overrides?.runtimeConfig?.public)
   return viteConfig
 }
 
