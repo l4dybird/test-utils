@@ -31,7 +31,7 @@ export default <Environment>{
     }))
 
     win.__NUXT_VITEST_ENVIRONMENT__ = true
-    console.log('hoge', environmentOptions)
+    console.log('hoge', environmentOptions.nuxt?.overrides)
     win.__NUXT__ = {
       serverRendered: false,
       config: {
