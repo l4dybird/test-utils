@@ -209,6 +209,9 @@ export function defineVitestConfig(config: InlineConfig & { test?: VitestConfig 
       config.test.setupFiles = [config.test.setupFiles].filter(Boolean) as string[]
     }
 
+    console.log('config', config)
+    console.log('overrides', overrides)
+
     return defu(
       config,
       await getVitestConfigFromNuxt(undefined, {
