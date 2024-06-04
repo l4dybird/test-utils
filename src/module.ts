@@ -85,8 +85,6 @@ export default defineNuxtModule<NuxtVitestOptions>({
 
       const viteConfig = await getVitestConfigFromNuxt({ nuxt, viteConfig: defu({ test: options.vitestConfig }, rawViteConfig) })
 
-      console.log('viteConfig', viteConfig.test)
-
       viteConfig.plugins = (viteConfig.plugins || []).filter((p) => {
         return !p || !('name' in p) || !vitePluginBlocklist.includes(p.name)
       })
@@ -135,6 +133,7 @@ export default defineNuxtModule<NuxtVitestOptions>({
         : { watch: false }
 
       // Start Vitest
+      console.log('viteConfig', defu(overrides, viteConfig.test), viteConfig)
       const promise = startVitest('test', [], defu(overrides, viteConfig.test), viteConfig)
       promise.catch(() => process.exit(1))
 
