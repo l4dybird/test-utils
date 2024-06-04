@@ -6,6 +6,6 @@ it('unit test', () => {
 
 it('hello nuxt', () => {
   const config = useRuntimeConfig()
-  console.log('fuga', config.public)
-  expect(config.public).toBe('nuxt')
+  console.log('fuga', config)
+  expect(config).toBe('nuxt')
 })

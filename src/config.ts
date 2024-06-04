@@ -208,19 +208,16 @@ export function defineVitestConfig(config: InlineConfig & { test?: VitestConfig 
     if (config.test?.setupFiles && !Array.isArray(config.test.setupFiles)) {
       config.test.setupFiles = [config.test.setupFiles].filter(Boolean) as string[]
     }
-    console.log('test', config.test?.environmentOptions?.nuxt?.overrides)
     const hoge = await getVitestConfigFromNuxt(undefined, {
       dotenv: config.test?.environmentOptions?.nuxt?.dotenv,
       overrides: structuredClone(overrides),
     })
-    console.log('hoge', hoge.test?.environmentOptions?.nuxt?.overrides)
 
     const mergeConfig = defu(
       config,
       hoge,
     )
 
-    console.log('marge', mergeConfig.test?.environmentOptions?.nuxt?.overrides)
     return mergeConfig
   })
 }
