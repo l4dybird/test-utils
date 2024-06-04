@@ -198,7 +198,7 @@ export async function getVitestConfigFromNuxt(
 
 export function defineVitestConfig(config: InlineConfig & { test?: VitestConfig } = {}) {
   // @ts-expect-error TODO: investigate type mismatch
-  return defineConfig(async () => {
+  const viteConfig = defineConfig(async () => {
     // When Nuxt module calls `startVitest`, we don't need to call `getVitestConfigFromNuxt` again
     if (process.env.__NUXT_VITEST_RESOLVED__) return config
 
@@ -208,21 +208,21 @@ export function defineVitestConfig(config: InlineConfig & { test?: VitestConfig 
     if (config.test?.setupFiles && !Array.isArray(config.test.setupFiles)) {
       config.test.setupFiles = [config.test.setupFiles].filter(Boolean) as string[]
     }
-    console.log('test', config.test?.environmentOptions?.nuxt?.overrides)
     const hoge = await getVitestConfigFromNuxt(undefined, {
       dotenv: config.test?.environmentOptions?.nuxt?.dotenv,
       overrides: structuredClone(overrides),
     })
-    console.log('hoge', hoge.test?.environmentOptions?.nuxt?.overrides)
 
     const mergeConfig = defu(
       config,
       hoge,
     )
 
-    console.log('marge', mergeConfig.test?.environmentOptions?.nuxt?.overrides)
+    console.log('marge', mergeConfig.test?.environmentOptions?.nuxt?.overrides?.runtimeConfig?.public)
     return mergeConfig
   })
+  console.log('vite', viteConfig)
+  return viteConfig
 }
 
 declare module 'vitest' {
