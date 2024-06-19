@@ -133,6 +133,7 @@ export default defineNuxtModule<NuxtVitestOptions>({
         : { watch: false }
 
       // Start Vitest
+      console.log('viteConfig', defu(overrides, viteConfig.test), viteConfig)
       const promise = startVitest('test', [], defu(overrides, viteConfig.test), viteConfig)
       promise.catch(() => process.exit(1))
 

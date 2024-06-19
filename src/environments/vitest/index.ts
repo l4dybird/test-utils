@@ -31,7 +31,6 @@ export default <Environment>{
     }))
 
     win.__NUXT_VITEST_ENVIRONMENT__ = true
-
     win.__NUXT__ = {
       serverRendered: false,
       config: {
