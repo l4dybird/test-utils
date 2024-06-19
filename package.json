@@ -154,10 +154,14 @@
   "engines": {
     "node": ">=18.20.3"
   },
-  "packageManager": "pnpm@9.1.2",
+  "packageManager": "pnpm@9.4.0",
   "pnpm": {
     "patchedDependencies": {
       "nuxt@3.11.2": "patches/nuxt@3.11.2.patch"
     }
+  },
+  "volta": {
+    "node": "20.14.0",
+    "pnpm": "9.4.0"
   }
 }
