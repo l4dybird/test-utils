@@ -7,5 +7,5 @@ it('should return the runtimeConfig from nuxt.config', () => {
     hello: 'nuxt',
     testValue: 123,
   })
-  expect(config).toBe('nuxt')
+  expect(config.public.hello).toBe('nuxt')
 })
